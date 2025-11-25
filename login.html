@@ -134,52 +134,56 @@
         </form>
     </div>
 
-    <script>
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Sprečava da stranica bude osvežena
+ <script>
+    // 🚀 OVDJE STAVI SVOJ BACKEND URL
+    const API_BASE = "https://backend-ojru.onrender.com"; // promijeni po potrebi
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    // Proveri da li su uneseni podaci
-    if (!username || !password) {
-        document.getElementById('message').innerText = "Korisničko ime i lozinka su obavezni!";
-        document.getElementById('message').classList.add('show');
-        return;
-    }
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const msg = document.getElementById('message');
 
-    console.log('Slanje podataka...'); // Ova linija ti pomaže da vidiš da li je fetch pozvan
-
-    // Slanje podataka serveru
-    fetch('https://backend-ojru.onrender.com/login', {  // Proveri da li je URL ispravan
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);  // Pomoćna linija za debagovanje
-        if (data.status === 'success') {
-            localStorage.setItem("korisnik", username); // Sačuvaj prijavljenog korisnika
-            alert(data.message);
-            window.location.href = "home.html"; // Redirektuj korisnika na glavnu stranicu (ili bilo koju drugu)
-
-            // Zatvori stranicu za prijavu nakon uspešne prijave
-            window.close();
-        } else {
-            document.getElementById('message').innerText = data.message;
-            document.getElementById('message').classList.add('show');
+        if (!username || !password) {
+            msg.innerText = "Korisničko ime i lozinka su obavezni!";
+            msg.classList.add('show');
+            return;
         }
-    })
-    .catch(error => {
-        console.error('Greška:', error);
-        document.getElementById('message').innerText = 'Došlo je do greške.';
-        document.getElementById('message').classList.add('show');
+
+        fetch(`${API_BASE}/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.status === 'success') {
+                // spremi korisnika + token, isto kao na glavnoj strani
+                localStorage.setItem("korisnik", username);
+                localStorage.setItem("token", data.token);
+
+                alert(data.message || "Prijava uspješna!");
+
+                // osvježi parent prozor i zatvori login
+                if (window.opener) {
+                    window.opener.location.reload();
+                }
+                window.close();
+            } else {
+                msg.innerText = data.message || "Pogrešno korisničko ime ili lozinka.";
+                msg.classList.add('show');
+            }
+        })
+        .catch(err => {
+            console.error('Greška:', err);
+            msg.innerText = 'Došlo je do greške.';
+            msg.classList.add('show');
+        });
     });
-});
     </script>
 </body>
 </html>
+
 
