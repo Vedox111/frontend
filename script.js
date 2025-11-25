@@ -1,5 +1,5 @@
 // 🚀 OVDJE STAVI SVOJ BACKEND URL SA RENDERA
-const API_BASE = "https://backend-abc123.onrender.com"; // <-- PROMIJENI
+const API_BASE = "https://backend-ojru.onrender.com"; // <-- PROMIJENI
 
 // Kreiraj IntersectionObserver
 document.addEventListener("DOMContentLoaded", function () {
@@ -941,3 +941,4 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
