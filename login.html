@@ -151,7 +151,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     console.log('Slanje podataka...'); // Ova linija ti pomaže da vidiš da li je fetch pozvan
 
     // Slanje podataka serveru
-    fetch('http://localhost:3000/login', {  // Proveri da li je URL ispravan
+    fetch('https://backend-ojru.onrender.com/login', {  // Proveri da li je URL ispravan
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -182,3 +182,4 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     </script>
 </body>
 </html>
+
