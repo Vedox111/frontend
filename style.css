@@ -1183,20 +1183,29 @@ border: 2px solid black;
 }
 
 @media screen and (max-width: 768px) {
-  html, body {
-    width: 100%;
-    min-height: 100%;
-    overscroll-behavior-y: none;
-    overflow-x: hidden;
-  }
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+}
 
-  body {
-    background-image: url('img/pozadina.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll; /* 👈 ili jednostavno izbriši ovaj red */
-  }
+/* NEMA background-image na body više */
+body {
+  position: relative;
+}
+
+/* Fiksna pozadina kao sloj ispod svega */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
+  z-index: -1;              /* da bude iza sadržaja */
+  background-image: url('img/pozadina.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .naslov{
 text-align: center;
 
@@ -3465,6 +3474,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
