@@ -2762,21 +2762,7 @@ border: 2px solid black;
 
 /* === 📱 MOBILNA SEKCIJA === */
 @media screen and (max-width: 768px) {
-    html, body {
-        width: 100%;
-        min-height: 100dvh; /* dynamic viewport height - najstabilnije */
-        overflow-x: hidden;
-    }
 
-    body {
-        background-image: url('img/pozadina.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        /* ❌ mora biti isključeno na telefonima */
-        background-attachment: scroll;
-    }
 .naslov{
 text-align: center;
 
@@ -3479,6 +3465,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
