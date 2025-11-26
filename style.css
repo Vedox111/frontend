@@ -1191,22 +1191,15 @@ html, body {
 }
 .bgfix {
     position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    object-fit: cover;        /* Popuni ekran kao cover */
-    object-position: center;  /* Centriraj sliku */
-
-    z-index: -9999;           /* Iza svega */
+    inset: 0;                     /* top:0; right:0; bottom:0; left:0 */
+    z-index: -9999;               /* iza svega */
+    background-image: url('img/pozadina.png');
+    background-size: cover;       /* POKRIJ CIJELI EKRAN */
+    background-position: center;
+    background-repeat: no-repeat;
     pointer-events: none;
     user-select: none;
-
-    background-color: #000;   /* fallback */
 }
-
 /* NEMA background-image na body više */
 body {
   position: relative;
@@ -3474,6 +3467,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
