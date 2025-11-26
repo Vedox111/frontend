@@ -654,15 +654,20 @@ function sacuvajIzmenemodaledit() {
     let expiresTime = document.getElementById("expires_time_edit").value;
     let hasExpiry = document.getElementById("has_expiry_edit").checked;
 
-    let expiresAt = null;
     let isPinned = document.getElementById("edit_is_pinned").checked ? 1 : 0;
 
-    if (hasExpiry && expiresDate && expiresTime) {
-        expiresAt = new Date(`${expiresDate}T${expiresTime}:00`);
-        console.log("Kreirani datum za expires_at:", expiresAt);
-    } else if (hasExpiry && (expiresDate || expiresTime)) {
-        expiresAt = new Date(`${expiresDate || '1970-01-01'}T${expiresTime || '00:00'}:00`);
-        console.log("Kreirani datum za expires_at (nekompletan unos):", expiresAt);
+    // ✅ VALIDACIJA DATUMA ISTEKA
+    let expiresAt = ""; // default = nema isteka (backend će ga pretvoriti u NULL)
+
+    if (hasExpiry) {
+        // ako je čekirano, MORA biti i datum i vrijeme
+        if (!expiresDate || !expiresTime) {
+            alert("Ako uključiš datum isteka, moraš unijeti i datum i vrijeme!");
+            return;
+        }
+        // šaljemo normalan ISO string koji Postgres voli
+        expiresAt = `${expiresDate}T${expiresTime}:00.000Z`;
+        console.log("Kreirani expires_at:", expiresAt);
     }
 
     if (!naslov || !short || !opis) {
@@ -677,26 +682,27 @@ function sacuvajIzmenemodaledit() {
     formData.append("opis", opis);
     formData.append("slika", slika);
     formData.append("is_pinned", isPinned);
-    formData.append("expires_at", expiresAt);
+    formData.append("expires_at", expiresAt); // 👈 ili ISO string ili prazan
 
     fetch(`${API_BASE}/edit-news`, {
         method: "POST",
         body: formData
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Odgovor sa servera:", data);
-            if (data.status === "success") {
-                alert("Novost je uspješno sačuvana.");
-                zatvoriModalmodaledit();
-            } else {
-                alert("Došlo je do greške pri čuvanju novosti.");
-            }
-        })
-        .catch(error => {
-            console.error("Greška pri slanju podataka:", error);
-        });
+    .then(response => response.json())
+    .then(data => {
+        console.log("Odgovor sa servera:", data);
+        if (data.status === "success") {
+            alert("Novost je uspješno sačuvana.");
+            zatvoriModalmodaledit();
+        } else {
+            alert("Došlo je do greške pri čuvanju novosti.");
+        }
+    })
+    .catch(error => {
+        console.error("Greška pri slanju podataka:", error);
+    });
 }
+
 
 function zatvoriModalmodaledit() {
     document.getElementById("modal-edit").style.display = "none";
@@ -941,3 +947,4 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
