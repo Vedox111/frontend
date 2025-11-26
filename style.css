@@ -3472,25 +3472,5 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
-/* DESKTOP (šire od 768px) – prikaz za komp */
-@media (min-width: 769px) {
-  #novosti-wrapper {   /* ovaj koji puni loadNews() */
-    display: none;
-  }
 
-  #novosti-lista {     /* ovaj koji puni dohvatiNovosti() */
-    display: flex;     /* ili grid / block kako već imaš */
-  }
-}
-
-/* MOBITEL (do 768px) – prikaz za telefon */
-@media (max-width: 768px) {
-  #novosti-wrapper {
-    display: flex;     /* telefon layout */
-  }
-
-  #novosti-lista {
-    display: none;
-  }
-}
 
