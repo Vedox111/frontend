@@ -8,7 +8,6 @@ body {
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
-background-attachment: fixed; /* ovo fiksira pozadinu */
  }
 
  .header {
@@ -1112,7 +1111,6 @@ text-align: center;
      background-image: url('img/pozadina.png');
 background-size: cover;
 background-position: left;
-background-attachment: fixed; /* ovo fiksira pozadinu */
      padding: 20px;
      border-radius: 10px;
      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -1597,7 +1595,6 @@ body {
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
-background-attachment: fixed; /* ovo fiksira pozadinu */
  }
 
  .header {
