@@ -5,8 +5,7 @@ body {
      padding: 0;
      overflow-x: hidden;
      background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: center;
+background-size: 100% auto;background-position: center;
 background-repeat: no-repeat;
  }
 
@@ -1109,8 +1108,7 @@ text-align: center;
  .modal-contenttebela {
      background: url(img/pozadina.png);
      background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: left;
+background-size: 100% auto;background-position: left;
      padding: 20px;
      border-radius: 10px;
      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -1200,8 +1198,7 @@ body::before {
   inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
   z-index: -1;              /* da bude iza sadržaja */
   background-image: url('img/pozadina.png');
-  background-size: cover;
-  background-position: center;
+  background-size: 100% auto;  background-position: center;
   background-repeat: no-repeat;
 }
 .naslov{
@@ -1343,8 +1340,7 @@ top: 60px;
 left: 0;
 width: 60%;
 background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: center;
+background-size: 100% auto;background-position: center;
 background-repeat: no-repeat;
     background-attachment: scroll; /* ovo fiksira pozadinu */
 box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -1592,8 +1588,7 @@ body {
      padding: 0;
      overflow-x: hidden;
      background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: center;
+background-size: 100% auto;background-position: center;
 background-repeat: no-repeat;
  }
 
@@ -2689,8 +2684,7 @@ text-align: center;
  .modal-contenttebela {
      background: url(img/pozadina.png);
      background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: left;
+background-size: 100% auto;background-position: left;
     background-attachment: scroll; /* ovo fiksira pozadinu */
      padding: 20px;
      border-radius: 10px;
@@ -2908,8 +2902,7 @@ top: 60px;
 left: 0;
 width: 60%;
 background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: center;
+background-size: 100% auto;background-position: center;
 background-repeat: no-repeat;
     background-attachment: scroll;
 box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -3153,8 +3146,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   background-image: url('img/pozadina.png');
-  background-size: cover;
-  background-position: center;
+  background-size: 100% auto;  background-position: center;
   background-repeat: no-repeat;
     background-attachment: scroll;
   color: white;
