@@ -1186,21 +1186,22 @@ html, body {
   min-height: 100%;
   overflow-x: hidden;
   margin: 0;
-  background-color: #007BFF;
+        background: transparent !important;
   
 }
-.bgfix {
-    position: fixed;
-    inset: 0;                     /* top:0; right:0; bottom:0; left:0 */
-    z-index: -9999;               /* iza svega */
-    background-image: url('img/pozadina.png');
-    background-size: cover;       /* POKRIJ CIJELI EKRAN */
-    background-position: center;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    user-select: none;
-}
-/* NEMA background-image na body više */
+    .bgfix {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-image: url('img/pozadina.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -9999;
+        pointer-events: none;
+    }
+
+
 body {
   position: relative;
 }
@@ -3467,6 +3468,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
