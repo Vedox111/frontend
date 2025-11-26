@@ -1,25 +1,15 @@
 
-
-
-/* Pozadinska slika kao <img> element da ne skace na mobitelu */
-.bgfix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-}
-
 body {
      font-family: 'Roboto', sans-serif;
      margin: 0;
      padding: 0;
      overflow-x: hidden;
-     background-color: #000000;
+     background-image: url('img/pozadina.png');
+background-size: 100% auto;background-position: center;
+background-repeat: no-repeat;
+ }
+ .bgfix{
+    display: none;
  }
 
  .header {
@@ -1119,11 +1109,8 @@ text-align: center;
  }
 
  .modal-contenttebela {
-     background: url(img/pozadina.png);
      background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: left;
-background-attachment: fixed; /* ovo fiksira pozadinu */
+background-size: 100% auto;background-position: left;
      padding: 20px;
      border-radius: 10px;
      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -1199,13 +1186,25 @@ html, body {
   min-height: 100%;
   overflow-x: hidden;
   margin: 0;
+  background-color: #007BFF;
+  
+}
+.bgfix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* NEMA background-image na body više */
 body {
   position: relative;
 }
-
 
 .naslov{
 text-align: center;
@@ -1346,8 +1345,7 @@ top: 60px;
 left: 0;
 width: 60%;
 background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: center;
+background-size: 100% auto;background-position: center;
 background-repeat: no-repeat;
     background-attachment: scroll; /* ovo fiksira pozadinu */
 box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -1594,7 +1592,9 @@ body {
      margin: 0;
      padding: 0;
      overflow-x: hidden;
-     background-color: #000000;
+     background-image: url('img/pozadina.png');
+background-size: 100% auto;background-position: center;
+background-repeat: no-repeat;
  }
 
  .header {
@@ -2689,8 +2689,7 @@ text-align: center;
  .modal-contenttebela {
      background: url(img/pozadina.png);
      background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: left;
+background-size: 100% auto;background-position: left;
     background-attachment: scroll; /* ovo fiksira pozadinu */
      padding: 20px;
      border-radius: 10px;
@@ -2908,8 +2907,7 @@ top: 60px;
 left: 0;
 width: 60%;
 background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: center;
+background-size: 100% auto;background-position: center;
 background-repeat: no-repeat;
     background-attachment: scroll;
 box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -3152,7 +3150,10 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #000000;
+  background-image: url('img/pozadina.png');
+  background-size: 100% auto;  background-position: center;
+  background-repeat: no-repeat;
+    background-attachment: scroll;
   color: white;
 }
 
