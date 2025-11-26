@@ -1213,6 +1213,12 @@ body {
 text-align: center;
 
 }
+  .naviga {
+    display: none !important;
+  }
+    .javljanje {
+    display: none !important;
+  }
 .container {
 width: 100%;
 max-width: 100%; /* Sprječava dodatni prostor sa strane */
@@ -1342,36 +1348,43 @@ position: absolute;
 top: 60px;
 left: 0;
 width: 60%;
-background-image: url('img/pozadina.png');
-background-size: 100% auto;background-position: center;
-background-repeat: no-repeat;
-    background-attachment: scroll; /* ovo fiksira pozadinu */
-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.745);
+  box-shadow: 0 0 12px rgba(255, 255, 0, 0.15);
 padding: 15px 0;
 z-index: 1000;
-border: 2px solid black;
+  border: 2px solid var(--gold-glow);
 border-top-right-radius: 20px;
 border-bottom-right-radius: 20px;
 color: white;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+.mobile-menu:hover {
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 18px var(--gold-glow);
+}
 .mobile-menu img {
 height: 40px;  /* Podesi visinu slika */
 margin: 10px;  /* Razmak između slika */
 }
 
 .mobile-menu a {
-display: block;
-padding: 10px 0;
-color: #ffffff;
-text-decoration: none;
-font-size: 18px;
-text-align: center;
-transition: background-color 0.3s ease;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: 0.3s;
 }
 
-.mobile-menu a:hover {
-background-color: #f4f4f4;
+.mobile-menu a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: var(--gold);
+  transition: width 0.3s ease;
 }
 
 /* Slike će biti raspoređene horizontalno */
@@ -2788,7 +2801,6 @@ z-index: 10;
 }
 .naviga{
  display: none;
- text-align: center;
 
 }
 .slider-nav {
@@ -2897,39 +2909,17 @@ opacity: 0;
 .active .line:nth-child(3) {
 transform: translateY(-10px) rotate(-45deg);
 }
-.mobile-menu {
-display: none;
-flex-direction: column;
-position: absolute;
-top: 60px;
-left: 0;
-width: 60%;
-background-image: url('img/pozadina.png');
-background-size: 100% auto;background-position: center;
-background-repeat: no-repeat;
-    background-attachment: scroll;
-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-padding: 15px 0;
-z-index: 1000;
-border: 2px solid black;
-border-top-right-radius: 20px;
-border-bottom-right-radius: 20px;
-color: white;
-}
 
 .mobile-menu img {
 height: 40px;  /* Podesi visinu slika */
 margin: 10px;  /* Razmak između slika */
 }
 
-.mobile-menu a {
-display: block;
-padding: 10px 0;
-color: #ffffff;
-text-decoration: none;
-font-size: 18px;
-text-align: center;
-transition: background-color 0.3s ease;
+.noticedrugi{
+    width: 100% !important;
+}
+.card{
+    width: 100% !important;
 }
 
 .mobile-menu a:hover {
