@@ -2762,17 +2762,21 @@ border: 2px solid black;
 
 /* === 📱 MOBILNA SEKCIJA === */
 @media screen and (max-width: 768px) {
-body, html {
-width: 100%;
-height: 100%;
-     overflow-x: hidden;
-     background-image: url('img/pozadina.png');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-background-attachment: fixed; /* ovo fiksira pozadinu */
+    html, body {
+        width: 100%;
+        min-height: 100dvh; /* dynamic viewport height - najstabilnije */
+        overflow-x: hidden;
+    }
 
-}
+    body {
+        background-image: url('img/pozadina.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        /* ❌ mora biti isključeno na telefonima */
+        background-attachment: scroll;
+    }
 .naslov{
 text-align: center;
 
@@ -3475,6 +3479,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
