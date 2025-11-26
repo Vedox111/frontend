@@ -649,25 +649,23 @@ function sacuvajIzmenemodaledit() {
     let naslov = document.getElementById("naslovzaedit").value;
     let short = document.getElementById("shortzaedit").value;
     let opis = document.getElementById("opiszaedit").value;
-    let slika = document.getElementById("slikazaedit").files[0];
+    let slikaInput = document.getElementById("slikazaedit");
+    let slika = slikaInput.files[0];
+
     let expiresDate = document.getElementById("expires_date_edit").value;
     let expiresTime = document.getElementById("expires_time_edit").value;
     let hasExpiry = document.getElementById("has_expiry_edit").checked;
 
     let isPinned = document.getElementById("edit_is_pinned").checked ? 1 : 0;
 
-    // ✅ VALIDACIJA DATUMA ISTEKA
-    let expiresAt = ""; // default = nema isteka (backend će ga pretvoriti u NULL)
-
+    // expires_at
+    let expiresAt = "";
     if (hasExpiry) {
-        // ako je čekirano, MORA biti i datum i vrijeme
         if (!expiresDate || !expiresTime) {
             alert("Ako uključiš datum isteka, moraš unijeti i datum i vrijeme!");
             return;
         }
-        // šaljemo normalan ISO string koji Postgres voli
         expiresAt = `${expiresDate}T${expiresTime}:00.000Z`;
-        console.log("Kreirani expires_at:", expiresAt);
     }
 
     if (!naslov || !short || !opis) {
@@ -680,15 +678,19 @@ function sacuvajIzmenemodaledit() {
     formData.append("naslov", naslov);
     formData.append("short", short);
     formData.append("opis", opis);
-    formData.append("slika", slika);
     formData.append("is_pinned", isPinned);
-    formData.append("expires_at", expiresAt); // 👈 ili ISO string ili prazan
+    formData.append("expires_at", expiresAt);
+
+    // 👇 samo ako je stvarno izabrana nova slika
+    if (slika) {
+        formData.append("slika", slika);
+    }
 
     fetch(`${API_BASE}/edit-news`, {
         method: "POST",
         body: formData
     })
-    .then(response => response.json())
+    .then(r => r.json())
     .then(data => {
         console.log("Odgovor sa servera:", data);
         if (data.status === "success") {
@@ -698,9 +700,7 @@ function sacuvajIzmenemodaledit() {
             alert("Došlo je do greške pri čuvanju novosti.");
         }
     })
-    .catch(error => {
-        console.error("Greška pri slanju podataka:", error);
-    });
+    .catch(err => console.error("Greška pri slanju podataka:", err));
 }
 
 
@@ -947,4 +947,5 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
 
