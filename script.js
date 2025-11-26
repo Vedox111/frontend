@@ -787,58 +787,7 @@ function getNewsCount() {
         });
 }
 
-// Zakucane novosti (drugi dio koda)
-function loadNews() {
-    fetch(`${API_BASE}/get-news`)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Prijem podataka:", data);
 
-            const newsContainer = document.getElementById('novosti-wrapper');
-            if (!newsContainer) {
-                console.error('Element sa ID-om "novosti-wrapper" nije pronađen.');
-                return;
-            }
-
-            const newsData = data.novosti || [];
-
-            if (newsData.length === 0) {
-                newsContainer.innerHTML = '<p>Nema novosti za prikazivanje.</p>';
-            } else {
-                newsContainer.innerHTML = '';
-                newsData.forEach(news => {
-                    const newsItem = document.createElement('div');
-                    newsItem.classList.add('news-item');
-
-                    const title = document.createElement('h3');
-                    title.textContent = news.title;
-                    newsItem.appendChild(title);
-
-                    const content = document.createElement('p');
-                    content.textContent = news.content;
-                    newsItem.appendChild(content);
-
-                    if (news.image_path) {
-                        const image = document.createElement('img');
-                        image.src = `${API_BASE}/${news.image_path}`;
-                        image.alt = news.title;
-                        newsItem.appendChild(image);
-                    }
-
-                    const createdAt = document.createElement('p');
-                    createdAt.textContent = new Date(news.created_at).toLocaleString();
-                    newsItem.appendChild(createdAt);
-
-                    newsContainer.appendChild(newsItem);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Greška pri pozivu API-ja:', error);
-        });
-}
-
-document.addEventListener('DOMContentLoaded', loadNews);
 
 document.getElementById("otvori-modal").addEventListener("click", function () {
     document.getElementById("modal").style.display = "flex";
@@ -947,5 +896,6 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
 
 
