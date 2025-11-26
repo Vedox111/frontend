@@ -1,12 +1,15 @@
 
+
 body {
      font-family: 'Roboto', sans-serif;
      margin: 0;
      padding: 0;
      overflow-x: hidden;
      background-image: url('img/pozadina.png');
-background-size: 100% auto;background-position: center;
+background-size: cover;
+background-position: center;
 background-repeat: no-repeat;
+background-attachment: fixed; /* ovo fiksira pozadinu */
  }
  .bgfix{
     display: none;
@@ -1225,11 +1228,6 @@ z-index: 10;
 }
 .menu {
  display: none; /* Sakrij meni ako nije potreban */
-}
-.naviga{
- display: none;
- text-align: center;
-
 }
 .slider-nav {
     position: absolute;
