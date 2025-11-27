@@ -1319,7 +1319,7 @@ z-index: 10;
      padding: 15px 60px !important;
  }
   .header h1{
-    font-size: 25px;
+    font-size: 20px;
  }
 .hamburger{
  display: flex;
@@ -3452,6 +3452,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
