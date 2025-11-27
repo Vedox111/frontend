@@ -1310,15 +1310,21 @@ z-index: 10;
 }
 .header {
      display: flex;
-     justify-content: normal;
+     justify-content: center;
      align-items: center;
-     gap: 10%;
+     text-align: center;
      height: 40px;
+     gap: 20px;
      background-color: transparent;
+     padding: 15px 60px !important;
+ }
+  .header h1{
+    font-size: 25px;
  }
 .hamburger{
  display: flex;
  cursor: pointer;
+  
 }
 .hamburger line{
  width: 20px;
@@ -2781,6 +2787,7 @@ border: 2px solid black;
 
 .naslov{
 text-align: center;
+
 }
 .container {
 width: 100%;
@@ -2879,6 +2886,7 @@ z-index: 10;
      display: flex;
      justify-content: normal;
      align-items: center;
+     gap: 10%;
      height: 40px;
      background-color: transparent;
  }
@@ -3446,13 +3454,6 @@ body::before {
 }
 
 
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #ffffff;
-    }
-}
 
 
 
