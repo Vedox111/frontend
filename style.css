@@ -886,7 +886,7 @@ align-items: center;
 max-width: 600px;
 width: 90%;
 padding: 20px;
-background: white;
+background-image: url(img/pozadina.png);
 border-radius: 8px;
 display: flex;
 flex-direction: column;
@@ -903,12 +903,35 @@ margin-bottom: 15px;
 #modalPrikazNovostiOpisContainer {
 max-height: 300px;
 overflow-y: auto;
-width: 100%;
+width: 95%;
 padding: 10px;
-background: #f9f9f9;
-border: 1px solid #ccc;
-border-radius: 5px;
+ background-color: rgba(0, 0, 0, 0.779);
+border: 3px solid var(--gold-glow);
+border-radius: 10px;
+  box-shadow: 0 0 12px rgba(255, 255, 0, 0.15);
 }
+#modalPrikazNovostiOpisContainer p{
+    color: white;
+}
+#modalPrikazNovostiNaslov{
+     background-color: rgba(0, 0, 0, 0.779);
+border: 3px solid var(--gold-glow);
+color:white;
+ box-shadow: 0 0 12px rgba(255, 255, 0, 0.15);
+ border-radius: 15px;
+ padding: 10px;
+}
+
+.modal-prikaz-novosti-slika{
+border: 3px solid var(--gold-glow);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.modal-prikaz-novosti-slika:hover{
+      transform: scale(1.02);
+  box-shadow: 0 8px 15px var(--gold-glow);
+}
+
+
 
 #pagination {
 display: flex;
@@ -2474,16 +2497,6 @@ justify-content: center;
 align-items: center;
 }
 
-.modal-prikaz-novosti-content {
-max-width: 600px;
-width: 90%;
-padding: 20px;
-background: white;
-border-radius: 8px;
-display: flex;
-flex-direction: column;
-align-items: center;
-}
 
 .modal-prikaz-novosti img {
 width: 300px;
@@ -2492,15 +2505,7 @@ border-radius: 8px;
 margin-bottom: 15px;
 }
 
-#modalPrikazNovostiOpisContainer {
-max-height: 300px;
-overflow-y: auto;
-width: 100%;
-padding: 10px;
-background: #f9f9f9;
-border: 1px solid #ccc;
-border-radius: 5px;
-}
+
 
 #pagination {
 display: flex;
@@ -3452,7 +3457,6 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
-
 
 
 
