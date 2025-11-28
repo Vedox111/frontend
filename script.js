@@ -1,28 +1,28 @@
 // 🚀 OVDJE STAVI SVOJ BACKEND URL SA RENDERA
 const API_BASE = "https://backend-ojru.onrender.com"; // <-- PROMIJENI
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    // ADD modal
-    const addUploader = document.querySelector('uc-file-uploader-regular[ctx-name="add-news-uploader"]');
+    // ADD modal – slušamo ctx provider, ne uploader
+    const addCtx = document.querySelector('uc-upload-ctx-provider[ctx-name="add-news-uploader"]');
     const addImageInput = document.getElementById('image_url');
 
-    if (addUploader && addImageInput) {
-        addUploader.addEventListener('file-upload-success', (event) => {
-            const fileData = event.detail;
-            // Uploadcare vraća cdn URL
+    if (addCtx && addImageInput) {
+        addCtx.addEventListener('file-upload-success', (event) => {
+            const fileData = event.detail; // OutputFileEntry
             addImageInput.value = fileData.cdnUrl || "";
+            console.log("ADD cdnUrl:", addImageInput.value);
         });
     }
 
-    // EDIT modal
-    const editUploader = document.querySelector('uc-file-uploader-regular[ctx-name="edit-news-uploader"]');
+    // EDIT modal – opet ctx provider
+    const editCtx = document.querySelector('uc-upload-ctx-provider[ctx-name="edit-news-uploader"]');
     const editImageInput = document.getElementById('image_url_edit');
 
-    if (editUploader && editImageInput) {
-        editUploader.addEventListener('file-upload-success', (event) => {
+    if (editCtx && editImageInput) {
+        editCtx.addEventListener('file-upload-success', (event) => {
             const fileData = event.detail;
             editImageInput.value = fileData.cdnUrl || "";
+            console.log("EDIT cdnUrl:", editImageInput.value);
         });
     }
 });
@@ -961,6 +961,7 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
 
 
 
