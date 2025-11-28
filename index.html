@@ -375,9 +375,30 @@
     
                 <label for="opis">Celokupan Opis:</label>
                 <textarea id="opis" required></textarea>
-    
-                <label for="slika">Slika:</label>
-                <input type="file" id="slika" accept="image/*" required>
+
+<label for="slika">Slika:</label>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css"
+>
+<script type="module">
+  import * as UC from 'https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.js';
+  UC.defineComponents(UC);
+</script>
+
+<uc-config
+  ctx-name="my-uploader"
+  source-list="local, camera, facebook, gdrive"
+  pubkey="1700f24c6c7917d954b6"
+></uc-config>
+
+<uc-file-uploader-regular
+  ctx-name="my-uploader"
+  class="uc-light"
+></uc-file-uploader-regular>
+
+
+
                 <div style="display: flex; align-items: center; justify-content: center; gap: 4px;white-space: nowrap; padding: 20px;">
                     <label >Pinaj objavu:</label>
                     <input style="width: 16px; height: 16px; margin: 0;" type="checkbox" id="is_pinned">
