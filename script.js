@@ -635,34 +635,33 @@ function editujNovostModaledit(id) {
     }
 
     let naslovEl = novostDiv.querySelector(".naslov");
-    let shortEl = novostDiv.querySelector(".short");
-    let content = decodeURIComponent(novostDiv.getAttribute("data-content"));
+    let shortEl  = novostDiv.querySelector(".short");
+    let content  = decodeURIComponent(novostDiv.getAttribute("data-content"));
     let expiresAt = novostDiv.getAttribute("data-expires-at");
-    let isPinned = novostDiv.getAttribute("data-ispinned") === "1";
+    let isPinned  = novostDiv.getAttribute("data-ispinned") === "1";
 
     let imagePath = novostDiv.getAttribute("data-image_path") || "";
 
-// popuni hidden inpute
-document.getElementById("image_url_edit").value = imagePath;
-document.getElementById("stara-slika").value = imagePath;
+    // popuni hidden inpute
+    document.getElementById("image_url_edit").value = imagePath;
+    document.getElementById("stara-slika").value   = imagePath;
 
-// prikaži preview
-const preview = document.getElementById("slika-preview");
-if (imagePath) {
-    if (imagePath.startsWith("http")) {
-        preview.src = imagePath;
+    // prikaži preview
+    const preview = document.getElementById("slika-preview");
+    if (imagePath) {
+        if (imagePath.startsWith("http")) {
+            preview.src = imagePath;
+        } else {
+            preview.src = `${API_BASE}/${imagePath}`;
+        }
+        preview.style.display = "block";
     } else {
-        preview.src = `${API_BASE}/${imagePath}`;
+        preview.style.display = "none";
     }
-    preview.style.display = "block";
-} else {
-    preview.style.display = "none";
-}
-
 
     document.getElementById("naslovzaedit").value = naslovEl ? naslovEl.innerText : '';
-    document.getElementById("opiszaedit").value = content || '';
-    document.getElementById("shortzaedit").value = shortEl ? shortEl.innerText : '';
+    document.getElementById("opiszaedit").value   = content || '';
+    document.getElementById("shortzaedit").value  = shortEl ? shortEl.innerText : '';
 
     if (expiresAt && expiresAt !== 'null' && expiresAt !== '') {
         const expiresDate = new Date(expiresAt);
@@ -685,7 +684,6 @@ if (imagePath) {
     }
 
     document.getElementById("edit_is_pinned").checked = isPinned;
-    console.log(isPinned);
     document.getElementById("modal-edit-form").setAttribute("data-id", id);
     document.getElementById("modal-edit").style.display = "flex";
 }
@@ -968,6 +966,7 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
 
 
 
