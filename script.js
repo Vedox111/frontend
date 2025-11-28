@@ -474,7 +474,15 @@ function dohvatiNovosti() {
                     naslovEl.innerText = novost.title;
 
                     let slikaEl = document.createElement("img");
-                    slikaEl.src = `${API_BASE}/${novost.image_path}`;
+let slikaSrc = novost.image_path;
+
+// ako je relativna putanja → dodaj API_BASE
+if (slikaSrc && !slikaSrc.startsWith("http")) {
+    slikaSrc = `${API_BASE}/${slikaSrc}`;
+}
+
+slikaEl.src = slikaSrc || "";
+
                     if (screenWidth < 768) {
                         slikaEl.style.width = "100%";
                         slikaEl.style.height = "auto";
@@ -903,6 +911,7 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
 
 
 
