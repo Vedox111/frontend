@@ -7,6 +7,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css"> <!-- Link za CSS -->
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css"
+/>
+<script type="module">
+  import * as UC from 'https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.js';
+  UC.defineComponents(UC);
+</script>
+
 </head>
 <body>
           <div class="bgfix"></div>
@@ -376,8 +385,24 @@
                 <label for="opis">Celokupan Opis:</label>
                 <textarea id="opis" required></textarea>
     
-                <label for="slika">Slika:</label>
-                <input type="file" id="slika" accept="image/*" required>
+<label>Slika:</label>
+
+<uc-config
+  ctx-name="add-news-uploader"
+  source-list="local, camera, facebook, gdrive"
+  pubkey="1700f24c6c7917d954b6">
+</uc-config>
+
+<uc-upload-ctx-provider ctx-name="add-news-uploader"></uc-upload-ctx-provider>
+
+<uc-file-uploader-regular
+  ctx-name="add-news-uploader"
+  class="uc-light">
+</uc-file-uploader-regular>
+
+<input type="hidden" id="image_url" />
+
+                
                 <div style="display: flex; align-items: center; justify-content: center; gap: 4px;white-space: nowrap; padding: 20px;">
                     <label >Pinaj objavu:</label>
                     <input style="width: 16px; height: 16px; margin: 0;" type="checkbox" id="is_pinned">
@@ -417,10 +442,25 @@
                 <label for="opiszaedit">Opis:</label>
                 <textarea id="opiszaedit" placeholder="Unesite opis novosti" required></textarea>
     
-                <label for="slikazaedit">Izaberi sliku:</label>
-                <input type="file" id="slikazaedit" accept="image/*">
-                <img id="slika-preview"  alt="Preview slika" />
-                <input type="hidden" id="stara-slika" name="stara_slika">
+<label>Izaberi sliku:</label>
+
+<uc-config
+  ctx-name="edit-news-uploader"
+  source-list="local, camera, facebook, gdrive"
+  pubkey="1700f24c6c7917d954b6">
+</uc-config>
+
+<uc-upload-ctx-provider ctx-name="edit-news-uploader"></uc-upload-ctx-provider>
+
+<uc-file-uploader-regular
+  ctx-name="edit-news-uploader"
+  class="uc-light">
+</uc-file-uploader-regular>
+
+<img id="slika-preview" alt="Preview slika" />
+<input type="hidden" id="stara-slika" name="stara_slika">
+<input type="hidden" id="image_url_edit" />
+
 
                 <div style="display: flex; align-items: center; justify-content: center; gap: 4px;white-space: nowrap; padding: 20px;">
                     <label >Pinaj objavu:</label>
@@ -518,6 +558,7 @@
     
 </body>
 </html>
+
 
 
 
