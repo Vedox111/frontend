@@ -1,6 +1,32 @@
 // 🚀 OVDJE STAVI SVOJ BACKEND URL SA RENDERA
 const API_BASE = "https://backend-ojru.onrender.com"; // <-- PROMIJENI
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    // ADD modal
+    const addUploader = document.querySelector('uc-file-uploader-regular[ctx-name="add-news-uploader"]');
+    const addImageInput = document.getElementById('image_url');
+
+    if (addUploader && addImageInput) {
+        addUploader.addEventListener('file-upload-success', (event) => {
+            const fileData = event.detail;
+            // Uploadcare vraća cdn URL
+            addImageInput.value = fileData.cdnUrl || "";
+        });
+    }
+
+    // EDIT modal
+    const editUploader = document.querySelector('uc-file-uploader-regular[ctx-name="edit-news-uploader"]');
+    const editImageInput = document.getElementById('image_url_edit');
+
+    if (editUploader && editImageInput) {
+        editUploader.addEventListener('file-upload-success', (event) => {
+            const fileData = event.detail;
+            editImageInput.value = fileData.cdnUrl || "";
+        });
+    }
+});
+
 // Kreiraj IntersectionObserver
 document.addEventListener("DOMContentLoaded", function () {
     const targetDivs = document.querySelectorAll('.desnastranaslika, .lijevastranaslika');
@@ -386,6 +412,7 @@ function sakrijPanel() {
 }
 
 // Dodavanje novosti
+// Dodavanje novosti
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("modal-form").addEventListener("submit", function (event) {
         event.preventDefault();
@@ -393,29 +420,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const naslov = document.getElementById("naslov").value;
         const opis = document.getElementById("opis").value;
         const short = document.getElementById("short").value;
-        const slika = document.getElementById("slika").files[0];
+        const imageUrl = document.getElementById("image_url").value;
         const expires_date = document.getElementById("expires_date").value;
         const expires_time = document.getElementById("expires_time").value;
         const isPinned = document.getElementById("is_pinned").checked;
 
-        if (!naslov || !opis || !short || !slika) {
+        if (!naslov || !opis || !short || !imageUrl) {
             alert("Svi podaci moraju biti popunjeni!");
             return;
         }
 
-        const expires_at = `${expires_date}T${expires_time}:00.000Z`;
-
-        const formData = new FormData();
-        formData.append("title", naslov);
-        formData.append("content", opis);
-        formData.append("short", short);
-        formData.append("slika", slika);
-        formData.append("expires_at", expires_at);
-        formData.append("is_pinned", isPinned);
+        let expires_at = "";
+        if (document.getElementById("has_expiry").checked) {
+            if (!expires_date || !expires_time) {
+                alert("Ako uključiš datum isteka, moraš unijeti i datum i vrijeme!");
+                return;
+            }
+            expires_at = `${expires_date}T${expires_time}:00.000Z`;
+        }
 
         fetch(`${API_BASE}/add-news`, {
             method: "POST",
-            body: formData
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: naslov,
+                content: opis,
+                short: short,
+                image_path: imageUrl,      // ⬅️ URL od Uploadcare
+                expires_at: expires_at,
+                is_pinned: isPinned ? 1 : 0
+            })
         })
             .then(response => response.json())
             .then(data => {
@@ -461,13 +497,23 @@ function dohvatiNovosti() {
                     novostDiv.setAttribute("data-content", encodeURIComponent(novost.content));
                     novostDiv.setAttribute("data-expires-at", novost.expires_at);
                     novostDiv.setAttribute("data-ispinned", novost.ispinned ? "1" : "0");
+                    novostDiv.setAttribute("data-image_path", novost.image_path || "");
+
 
                     let naslovEl = document.createElement("h2");
                     naslovEl.classList.add("naslov");
                     naslovEl.innerText = novost.title;
 
-                    let slikaEl = document.createElement("img");
-                    slikaEl.src = `${API_BASE}/${novost.image_path}`;
+let slikaEl = document.createElement("img");
+
+// ako je kompletan URL (Uploadcare) – koristi direktno
+if (novost.image_path && novost.image_path.startsWith("http")) {
+    slikaEl.src = novost.image_path;
+} else {
+    // stari način – lokalna slika /images/...
+    slikaEl.src = `${API_BASE}/${novost.image_path}`;
+}
+
                     if (screenWidth < 768) {
                         slikaEl.style.width = "100%";
                         slikaEl.style.height = "auto";
@@ -594,6 +640,26 @@ function editujNovostModaledit(id) {
     let expiresAt = novostDiv.getAttribute("data-expires-at");
     let isPinned = novostDiv.getAttribute("data-ispinned") === "1";
 
+    let imagePath = novostDiv.getAttribute("data-image_path") || "";
+
+// popuni hidden inpute
+document.getElementById("image_url_edit").value = imagePath;
+document.getElementById("stara-slika").value = imagePath;
+
+// prikaži preview
+const preview = document.getElementById("slika-preview");
+if (imagePath) {
+    if (imagePath.startsWith("http")) {
+        preview.src = imagePath;
+    } else {
+        preview.src = `${API_BASE}/${imagePath}`;
+    }
+    preview.style.display = "block";
+} else {
+    preview.style.display = "none";
+}
+
+
     document.getElementById("naslovzaedit").value = naslovEl ? naslovEl.innerText : '';
     document.getElementById("opiszaedit").value = content || '';
     document.getElementById("shortzaedit").value = shortEl ? shortEl.innerText : '';
@@ -649,8 +715,6 @@ function sacuvajIzmenemodaledit() {
     let naslov = document.getElementById("naslovzaedit").value;
     let short = document.getElementById("shortzaedit").value;
     let opis = document.getElementById("opiszaedit").value;
-    let slikaInput = document.getElementById("slikazaedit");
-    let slika = slikaInput.files[0];
 
     let expiresDate = document.getElementById("expires_date_edit").value;
     let expiresTime = document.getElementById("expires_time_edit").value;
@@ -658,7 +722,6 @@ function sacuvajIzmenemodaledit() {
 
     let isPinned = document.getElementById("edit_is_pinned").checked ? 1 : 0;
 
-    // expires_at
     let expiresAt = "";
     if (hasExpiry) {
         if (!expiresDate || !expiresTime) {
@@ -673,36 +736,38 @@ function sacuvajIzmenemodaledit() {
         return;
     }
 
-    let formData = new FormData();
-    formData.append("id", document.getElementById("modal-edit-form").getAttribute("data-id"));
-    formData.append("naslov", naslov);
-    formData.append("short", short);
-    formData.append("opis", opis);
-    formData.append("is_pinned", isPinned);
-    formData.append("expires_at", expiresAt);
-
-    // 👇 samo ako je stvarno izabrana nova slika
-    if (slika) {
-        formData.append("slika", slika);
-    }
+    // ako je uploadana nova slika – uzmi nju, inače ostaje stara
+    let novaSlika = document.getElementById("image_url_edit").value;
+    let staraSlika = document.getElementById("stara-slika").value;
+    let imagePath = novaSlika || staraSlika || "";
 
     fetch(`${API_BASE}/edit-news`, {
         method: "POST",
-        body: formData
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id: document.getElementById("modal-edit-form").getAttribute("data-id"),
+            naslov: naslov,
+            short: short,
+            opis: opis,
+            is_pinned: isPinned,
+            expires_at: expiresAt,
+            image_path: imagePath
+        })
     })
-    .then(r => r.json())
-    .then(data => {
-        console.log("Odgovor sa servera:", data);
-        if (data.status === "success") {
-            alert("Novost je uspješno sačuvana.");
-            zatvoriModalmodaledit();
-        } else {
-            alert("Došlo je do greške pri čuvanju novosti.");
-        }
-    })
-    .catch(err => console.error("Greška pri slanju podataka:", err));
+        .then(r => r.json())
+        .then(data => {
+            console.log("Odgovor sa servera:", data);
+            if (data.status === "success") {
+                alert("Novost je uspješno sačuvana.");
+                zatvoriModalmodaledit();
+            } else {
+                alert("Došlo je do greške pri čuvanju novosti.");
+            }
+        })
+        .catch(err => console.error("Greška pri slanju podataka:", err));
 }
-
 
 function zatvoriModalmodaledit() {
     document.getElementById("modal-edit").style.display = "none";
@@ -896,6 +961,7 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
 
 
 
