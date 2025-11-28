@@ -873,14 +873,20 @@ function prikaziPrikazNovosti(novost) {
     console.log("Prikazujemo novost:", novost);
 
     let modalNaslov = document.getElementById("modalPrikazNovostiNaslov");
-    let modalSlika = document.getElementById("modalPrikazNovostiSlika");
-    let modalOpis = document.getElementById("modalPrikazNovostiOpis");
+    let modalSlika  = document.getElementById("modalPrikazNovostiSlika");
+    let modalOpis   = document.getElementById("modalPrikazNovostiOpis");
 
     modalNaslov.innerText = novost.title;
-    modalOpis.innerText = novost.content;
+    modalOpis.innerText   = novost.content;
 
     if (novost.image_path) {
-        modalSlika.src = `${API_BASE}/${novost.image_path}`;
+        // Ako je Uploadcare / neki CDN (počinje sa http), koristi URL direktno
+        if (novost.image_path.startsWith("http")) {
+            modalSlika.src = novost.image_path;
+        } else {
+            // Inače je stari lokalni path sa backenda
+            modalSlika.src = `${API_BASE}/${novost.image_path}`;
+        }
         modalSlika.style.display = "block";
     } else {
         modalSlika.style.display = "none";
@@ -888,6 +894,7 @@ function prikaziPrikazNovosti(novost) {
 
     document.getElementById("modalPrikazNovosti").style.display = "flex";
 }
+
 
 function zatvoriModalPrikazNovosti() {
     let modal = document.getElementById("modalPrikazNovosti");
@@ -961,6 +968,7 @@ function resetujSlike() {
 }
 
 promeniSliku(0);
+
 
 
 
