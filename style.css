@@ -2471,13 +2471,7 @@ right: 15px;
 font-size: 20px;
 cursor: pointer;
 }
-#otvori-modal {
-     display: none; /* Dugme je inicijalno sakriveno */
-     background-color: 007BFF;
-     color: white;
-     padding: 10px;
-     border-radius: 5px;
- }
+
  .modal {
      display: none;
      position: fixed;
@@ -2516,6 +2510,7 @@ cursor: pointer;
      color: #007BFF;
  }
  input, textarea, button {
+      background-color: transparent !important;
      width: calc(100% - 20px);
      padding: 10px;
      margin: 10px 0;
@@ -3515,6 +3510,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
