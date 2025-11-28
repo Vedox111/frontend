@@ -871,7 +871,7 @@ cursor: pointer;
  button {
 padding: 10px;
 color: #fff;
-border: px solid yellow;
+border: 2px solid yellow;
 border-radius: 5px;
 cursor: pointer;
 transition: background-color 0.3s ease, transform 0.3s ease;
@@ -2511,6 +2511,7 @@ cursor: pointer;
  }
  input, textarea, button {
       background-color: transparent !important;
+      border: 2px solid yellow;
      width: calc(100% - 20px);
      padding: 10px;
      margin: 10px 0;
@@ -3510,6 +3511,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
