@@ -724,7 +724,6 @@ margin-right: 10px; /* Razmak između dugmadi */
 
 button.edit-dugme {
 padding: 10px;
-background-color: #f8c94c;
 color: #fff;
 border: px solid yellow;
 border-radius: 5px;
@@ -3518,6 +3517,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
