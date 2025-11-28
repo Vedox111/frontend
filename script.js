@@ -390,33 +390,40 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("modal-form").addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const naslov = document.getElementById("naslov").value;
-        const opis = document.getElementById("opis").value;
-        const short = document.getElementById("short").value;
-        const slika = document.getElementById("slika").files[0];
+const naslov = document.getElementById("naslov").value;
+const opis = document.getElementById("opis").value;
+const short = document.getElementById("short").value;
+
+// Uzimamo vrijednost iz Uploadcare form inputa (URL ili UUID slike)
+const ucInput = document.querySelector('uc-form-input[ctx-name="my-uploader"]');
+const slika = ucInput ? ucInput.value : "";
         const expires_date = document.getElementById("expires_date").value;
         const expires_time = document.getElementById("expires_time").value;
         const isPinned = document.getElementById("is_pinned").checked;
 
-        if (!naslov || !opis || !short || !slika) {
-            alert("Svi podaci moraju biti popunjeni!");
-            return;
-        }
+if (!naslov || !opis || !short || !slika) {
+    alert("Svi podaci moraju biti popunjeni!");
+    return;
+}
 
-        const expires_at = `${expires_date}T${expires_time}:00.000Z`;
+const expires_at = `${expires_date}T${expires_time}:00.000Z`;
 
-        const formData = new FormData();
-        formData.append("title", naslov);
-        formData.append("content", opis);
-        formData.append("short", short);
-        formData.append("slika", slika);
-        formData.append("expires_at", expires_at);
-        formData.append("is_pinned", isPinned);
+const formData = new FormData();
+formData.append("title", naslov);
+formData.append("content", opis);
+formData.append("short", short);
 
-        fetch(`${API_BASE}/add-news`, {
-            method: "POST",
-            body: formData
-        })
+// ovdje više ne šaljemo fajl nego URL string
+formData.append("slika", slika);
+
+formData.append("expires_at", expires_at);
+formData.append("is_pinned", isPinned ? "true" : "false");
+
+fetch(`${API_BASE}/add-news`, {
+    method: "POST",
+    body: formData
+})
+
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
