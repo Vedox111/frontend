@@ -896,7 +896,6 @@ align-items: center;
 .modal-prikaz-novosti-content-dark {
 height: 100%;
 width: 100%;
-padding: 20px;
  background-color: #000000b1;
 border-radius: 8px;
 }
@@ -3465,6 +3464,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
