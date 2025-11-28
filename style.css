@@ -870,7 +870,6 @@ cursor: pointer;
  }
  button {
 padding: 10px;
-background-color: #f8c94c;
 color: #fff;
 border: px solid yellow;
 border-radius: 5px;
@@ -3516,6 +3515,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
