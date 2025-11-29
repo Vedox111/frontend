@@ -373,15 +373,6 @@ margin-bottom: 5px;
 color: #fff;
 padding-bottom: 15px;
 }
-.opisslikezapocetak button {
-padding: 10px;
-background-color: #f8c94c !important;
-color: #fff;
-border: px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-}
 
 
 
@@ -1971,20 +1962,7 @@ margin-bottom: 5px;
 color: #fff;
 padding-bottom: 15px;
 }
-.opisslikezapocetak button {
-padding: 10px;
-background-color: #f8c94c;
-color: #fff;
-border: 2px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-}
 
-.opisslikezapocetak button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
-}
 
  .partners, .news, .photo, .video, .competitions, .athletes, .organization {
      padding: 20px;
@@ -3176,7 +3154,6 @@ th, td {
 }
 
 .opisslikezapocetak button {
-  background-color: var(--gold);
   color: black;
   font-weight: bold;
   padding: 10px 20px;
