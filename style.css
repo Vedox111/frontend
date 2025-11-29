@@ -26,7 +26,7 @@ background-attachment: fixed; /* ovo fiksira pozadinu */
  }
  button {
       text-decoration: none;
-  border: 1px solid var(--gold);
+  border: 2px solid var(--gold);
   border-radius: 20px;
   padding: 8px 14px;
   margin: 4px;
@@ -41,6 +41,9 @@ button:hover {
   color: black;
   transform: scale(1.05);
   box-shadow: 0 0 15px var(--gold-glow);
+}
+.card-za-telefon{
+    display: none;
 }
  .header img {
      height: 50px;
@@ -1293,22 +1296,18 @@ z-index: 10;
             margin-bottom: 5px;
             background-color: rgba(0, 0, 0, 0.616); /* tamna, poluprozirna */
             color: #fff;
-            border: 3px solid yellow;
             padding: 15px;
             }
             .opisslikezapocetaktelefon button {
             padding: 10px;
-            background-color: #f8c94c;
             color: #fff;
-            border: 2px solid yellow;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
             }
             
             .opisslikezapocetaktelefon button:hover {
-            background-color: #438dd3;
-            transform: scale(1.05);
+            color: black;
             }
             
             
@@ -1571,7 +1570,6 @@ padding: 20px;
  margin-top: 15px;
  display: flex;
 padding: 10px;
-background-color: #f8c94c;
 color: #fff;
 border: px solid yellow;
 border-radius: 5px;
@@ -2662,6 +2660,28 @@ border: 2px solid black;
 /* === 📱 MOBILNA SEKCIJA === */
 @media screen and (max-width: 768px) {
 
+    .card{
+        display: none;
+    }
+.paragrafi-novi .card-za-telefon {
+    width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid yellow;
+  border-radius: 20px;
+  padding: 30px;
+  color: white;
+  flex: 1 1 45%;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paragrafi-novi .card-za-telefon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
+}
+
+
+
 .naslov{
 text-align: center;
 
@@ -2737,23 +2757,18 @@ z-index: 10;
             margin-bottom: 5px;
             background-color: rgba(0, 0, 0, 0.616); /* tamna, poluprozirna */
             color: #fff;
-            border: 3px solid yellow;
             padding: 15px;
+            border: 3px solid var(--gold-glow);
+            border-radius: 15px;
             }
             .opisslikezapocetaktelefon button {
             padding: 10px;
-            background-color: #f8c94c;
             color: #fff;
-            border: 2px solid yellow;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
             }
-            
-            .opisslikezapocetaktelefon button:hover {
-            background-color: #438dd3;
-            transform: scale(1.05);
-            }
+
             
             
 .javljanje{
@@ -2979,9 +2994,7 @@ padding: 20px;
 .opisslikezapocetaktelefon button{
  margin-top: 15px;
  display: flex;
-background-color: #007BFF;
 color: white;
-border: none;
 cursor: pointer;
 }
 table.tabela-raspored {
