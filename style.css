@@ -24,6 +24,24 @@ background-attachment: fixed; /* ovo fiksira pozadinu */
      background-color: transparent;
      border-bottom: 1px solid #ddd;
  }
+ button {
+      text-decoration: none;
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  padding: 8px 14px;
+  margin: 4px;
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+button:hover {
+  background: var(--gold);
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--gold-glow);
+}
  .header img {
      height: 50px;
  }
@@ -672,21 +690,6 @@ color: #555;
 }
 
 
-/* Dugme za brisanje novosti */
-.novosti-item button {
-padding: 10px;
-background-color: #f8c94c;
-color: #fff;
-border: px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-
-}
-
-.novosti-item button:hover {
-background-color: #007BFF;  /* Tamnija crvena pri hover-u */
-}
 .slikaEl{
 border-radius: 15px;
 }
@@ -708,15 +711,7 @@ gap: 15px; /* Razmak između novosti */
      color: white;
  }
 
-button {
-padding: 10px 15px;
-margin-top: 10px;
-cursor: pointer;
-font-size: 14px;
-border: none;
-border-radius: 5px;
-transition: background-color 0.3s;
-}
+
 
 .news-item button {
 margin-right: 10px; /* Razmak između dugmadi */
@@ -724,11 +719,6 @@ margin-right: 10px; /* Razmak između dugmadi */
 
 button.edit-dugme {
 padding: 10px;
-color: #fff;
-border: px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
 position: absolute;
 top: 10px;
 right: 80px;
@@ -737,21 +727,12 @@ margin-right: 5px;
 
 button.dugmeObrisi {
 padding: 10px;
-background-color: #f8c94c;
-color: #fff;
-border: px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
 position: absolute;
 top: 10px;
 right: 10px;
 margin-right: 5px;
 }
 
-button:hover {
-opacity: 0.8;
-}
 .modal {
 display: none;
 position: fixed;
@@ -856,7 +837,7 @@ cursor: pointer;
  .zatvori:hover {
      color: #007BFF;
  }
- input, textarea, button {
+ input, textarea {
      width: calc(100% - 20px);
      padding: 10px;
      margin: 10px 0;
@@ -868,21 +849,7 @@ cursor: pointer;
      background: #292929;
      color: #fff;
  }
- button {
-padding: 10px;
-color: #fff;
-border: 2px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-     cursor: pointer;
-     font-weight: bold;
-     width: auto;
-     margin: 5px 0;
- }
- button:hover {
-     background: #007BFF;
- }
+
  .modal-prikaz-novosti {
 display: none;
 position: fixed;
@@ -970,16 +937,6 @@ margin-top: 20px;
 padding: 10px;
 margin: 0 10px;
 padding: 10px;
-background-color: #f8c94c;
-color: #fff;
-border: 2px solid var(--gold-glow) !important;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
 }
 
 #pagination button:disabled {
@@ -1141,13 +1098,10 @@ margin-top: 50px;
  .edit-btn {
      display: none;
      padding: 10px 20px;
-     background: #0056b3;
      color: white;
-     border: none;
      border-radius: 5px;
      cursor: pointer;
      margin-bottom: 30px;
-     border: 2px solid yellow;
      border-radius: 10px;
  
  }
@@ -1178,7 +1132,16 @@ background-size: 100% auto;background-position: left;
      max-height: 85vh;
      overflow-y: auto;
      justify-items: center;
+         position: relative; /* OBAVEZNO! */
+    z-index: 10; 
  }
+ .modal-contenttebela::before {
+    content: "";
+    position: fixed;  /* prekriva ceo ekran */
+    inset: 0;         /* skraćeno za top:0; left:0; right:0; bottom:0; */
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;      /* sad će biti iza modala, ali ispred stranice */
+}
 
  .close-btntabela {
      float: right;
@@ -1190,9 +1153,6 @@ background-size: 100% auto;background-position: left;
  .save-btntabela {
      margin-top: 10px;
      padding: 10px 20px;
-     background: #0056b3;
-     color: white;
-     border: none;
      border-radius: 5px;
      cursor: pointer;
  }
@@ -2327,18 +2287,10 @@ color: #555;
 .novosti-item button {
 padding: 10px 20px;
 font-size: 1em;
-background-color: #f8c94c;
-color: #fff;
-border: px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
 
 }
 
-.novosti-item button:hover {
-background-color: #007BFF;  /* Tamnija crvena pri hover-u */
-}
+
 .slikaEl{
 border-radius: 15px;
 }
@@ -2360,60 +2312,10 @@ gap: 15px; /* Razmak između novosti */
      color: white;
  }
 
-button {
-padding: 10px 15px;
-margin-top: 10px;
-cursor: pointer;
-font-size: 14px;
-border: none;
-border-radius: 5px;
-transition: background-color 0.3s;
-}
+
 
 .news-item button {
 margin-right: 10px; /* Razmak između dugmadi */
-}
-
-button.edit-dugme {
-padding: 10px;
-background-color: #f8c94c;
-color: #fff;
-border: px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-position: absolute;
-top: 10px;
-right: 80px;
-margin-right: 5px;
-}
-
-button.dugmeObrisi {
-padding: 10px;
-background-color: #f8c94c;
-color: #fff;
-border: px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-position: absolute;
-top: 10px;
-right: 10px;
-margin-right: 5px;
-}
-
-button:hover {
-opacity: 0.8;
-}
-.modal {
-display: none;
-position: fixed;
-z-index: 1000;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -2509,35 +2411,7 @@ cursor: pointer;
  .zatvori:hover {
      color: #007BFF;
  }
- input, textarea, button {
-      background-color: transparent !important;
-      border: 2px solid yellow;
-     width: calc(100% - 20px);
-     padding: 10px;
-     margin: 10px 0;
-     border-radius: 8px;
-     border: none;
-     font-size: 16px;
- }
- input, textarea {
-     background: #292929;
-     color: #fff;
- }
- button {
-     padding: 10px;
-color: #fff;
-border: 2px solid yellow;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease, transform 0.3s ease;
-     cursor: pointer;
-     font-weight: bold;
-     width: auto;
-     margin: 5px 0;
- }
- button:hover {
-     background: #007BFF;
- }
+
  .modal-prikaz-novosti {
 display: none;
 position: fixed;
@@ -2567,15 +2441,7 @@ justify-content: center;
 margin-top: 20px;
 }
 
-#pagination button {
-padding: 10px;
-margin: 0 10px;
-background-color: #007BFF;
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-}
+    
 
 
 
@@ -2730,19 +2596,6 @@ margin-top: 50px;
      background: #000000;
  }
 
- .edit-btn {
-     display: none;
-     padding: 10px 20px;
-     background: #0056b3;
-     color: white;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
-     margin-bottom: 30px;
-     border: 2px solid yellow;
-     border-radius: 10px;
- 
- }
 
  .modaltabela {
      display: none; /* Flexbox za centriranje sadržaja */
@@ -2779,16 +2632,6 @@ background-size: 100% auto;background-position: left;
      font-size: 20px;
      cursor: pointer;
      color: red;
- }
-
- .save-btntabela {
-     margin-top: 10px;
-     padding: 10px 20px;
-     background: #0056b3;
-     color: white;
-     border: none;
-     border-radius: 5px;
-     cursor: pointer;
  }
  .modal-contenttebela h2{
      background-color: #000000ae;
@@ -3174,13 +3017,6 @@ th, td {
  font-size: 6px; /* Još manji font na telefonima */
 }
 
-/* Dugme za editovanje i za čuvanje */
-.edit-btn, .save-btntabela {
- width: 40%; /* Dugme zauzima punu širinu */
- padding: 10px 15px;
- font-size: 14px;
-}
-
 /* Prilagodba modala */
 .modal-contenttebela {
  width: 30px;
@@ -3429,15 +3265,9 @@ th, td {
 }
 
 /* === DUGMAD OPĆENITO === */
-button {
-  transition: all 0.3s ease;
-  border-radius: 12px;
-}
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px var(--gold-glow);
-}
+
+
 
 /* === ANIMACIJE === */
 @keyframes fadeDown {
@@ -3466,6 +3296,7 @@ body::before {
   background: rgba(0, 0, 0, 0.55); /* podešavaš jačinu crnila (0.4 do 0.7) */
   z-index: -1; /* da ostane iza svega */
 }
+
 
 .paragrafi-novi {
   display: flex;
@@ -3507,4 +3338,22 @@ body::before {
   line-height: 1.6;
   font-size: 1rem;
   text-align: justify;
+}
+#total-pages{
+    color: white;
+}
+#page-number{
+    color: white;
+}
+.page-display {
+    display: flex;
+    align-items: center; /* sve poravna savršeno po visini */
+    gap: 4px;            /* mali razmak */
+    font-size: 18px;     /* prilagodi kako želiš */
+    font-weight: bold;
+}
+
+.page-display .slash {
+    opacity: 0.7; /* da izgleda elegantnije */
+    color: white;
 }
