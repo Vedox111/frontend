@@ -970,6 +970,27 @@ promeniSliku(0);
 
 
 
+document.querySelectorAll(".card-za-telefon").forEach(card => {
+  const p = card.querySelector("p");
+  const btn = card.querySelector("button");
+
+  const shortText = p.textContent.trim();
+  const fullText = p.getAttribute("data-full").trim();
+
+  let open = false;
+
+  btn.addEventListener("click", () => {
+    if (open) {
+      p.textContent = shortText;
+      btn.textContent = "Saznaj vise";
+      open = false;
+    } else {
+      p.textContent = fullText;
+      btn.textContent = "Sakrij";
+      open = true;
+    }
+  });
+});
 
 
 
