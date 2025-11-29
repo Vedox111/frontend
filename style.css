@@ -3154,7 +3154,7 @@ th, td {
 }
 
 .opisslikezapocetak button {
-  color: black;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   padding: 10px 20px;
   border-radius: 12px;
