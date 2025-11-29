@@ -3340,7 +3340,7 @@ th, td {
 }
 
 .opisslikezapocetak button {
-  background: var(--gold);
+  background-color: var(--gold);
   color: black;
   font-weight: bold;
   padding: 10px 20px;
