@@ -972,7 +972,7 @@ margin: 0 10px;
 padding: 10px;
 background-color: #f8c94c;
 color: #fff;
-  border: 2px solid var(--gold-glow);
+border: 2px solid var(--gold-glow) !important;
 border-radius: 5px;
 cursor: pointer;
 transition: background-color 0.3s ease, transform 0.3s ease;
@@ -3508,6 +3508,7 @@ body::before {
   font-size: 1rem;
   text-align: justify;
 }
+
 
 
 
