@@ -633,7 +633,7 @@ justify-content: center;
 }
 
 .novosti-kontejner {
-max-width: 1250px;  /* Ograničena širina kontejnera */
+max-width: 1215px;  /* Ograničena širina kontejnera */
 margin: 60 20;  /* Centriranje kontejnera na stranici */
 padding: 40px;
 background-color: rgba(0, 0, 0, 0.567);  /* Bijela pozadina unutar kontejnera */
@@ -1673,7 +1673,7 @@ background-repeat: no-repeat;
      justify-content: flex-start; /* Poravnanje lijevo */
       align-items: center; /* Vertikalno centriranje (ako su stavke različite visine) */
      height: 40px;
-     width: 300px;
+     width: 280px;
      gap: 20px;
      color: white;
      background-color: #0000008a;
@@ -2206,16 +2206,6 @@ padding: 20px;
 display: flex;
 align-items: center;
 justify-content: center;
-}
-
-.novosti-kontejner {
-max-width: 1250px;  /* Ograničena širina kontejnera */
-margin: 60 20;  /* Centriranje kontejnera na stranici */
-padding: 40px;
-background-color: rgba(0, 0, 0, 0.567);  /* Bijela pozadina unutar kontejnera */
-border-radius: 10px; /* Zaokruženi uglovi */
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lagana senka */
-border: 4px solid yellow;
 }
 
 .novosti-kontejner h1 {
