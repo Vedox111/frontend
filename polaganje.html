@@ -9,11 +9,11 @@
 </head>
 <body>
     <div class="header">
-          <div class="mobile-toggle" onclick="document.querySelector('.header').classList.toggle('open')">
-                        <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-  </div>
+<div class="mobile-toggle" onclick="document.querySelector('.header').classList.toggle('open')">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div>
   <h1 class="naslov">PROGRAM ZA POLAGANJE TAEKWONDO NUR KAKANJ</h1>
         <div class="naviga">
             <a href="#9kup">9KUP</a>
@@ -285,6 +285,15 @@ window.addEventListener("scroll", function() {
         header.classList.remove("shrink");
     }
 });
+    document.addEventListener("click", function(e) {
+        const header = document.querySelector('.header');
+        const toggle = document.querySelector('.mobile-toggle');
+
+        // Ako klik NIJE na headeru i NIJE na toggleu → zatvori meni
+        if (!header.contains(e.target) && !toggle.contains(e.target)) {
+            header.classList.remove('open');
+        }
+    });
 </script>
 
 </body>
