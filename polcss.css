@@ -526,8 +526,8 @@ button:hover {
     .horizonta9 {
         flex-direction: column !important;
         align-items: center;
-        gap: 20px;
         width: 100%;
+        gap: 20px;
     }
 
     .video8 video {
@@ -535,70 +535,90 @@ button:hover {
         max-width: 400px; /* po želji */
         height: auto;
     }
-
+.video8{
+    width: 366px;
+}
     .objasnjene {
-        width: 100%;
+        width: 96%;
     }
     .content9{
         height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
     .content8{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
         .content7{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
         .content6{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
         .content5{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
         .content4{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
         .content3{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
         .content2{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
         .content1{
                 height: auto;
         width: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-right: none;
+        border-left: none;
     }
     .objasnjene{
         margin: 0px;
         padding: 10px;
     }
     .video8 video{
-        width: 307px;
+        width: 100%;
     }
 
 
@@ -608,8 +628,8 @@ button:hover {
     margin-top: -30px;
 }
 
-  .naviga {
-    top: 70px;
+  .naviga { 
+    position: fixed;
     left: 0;
     right: 0;
     margin: 0;
@@ -620,6 +640,7 @@ button:hover {
     background: rgba(0,0,0,0.95);
     padding: 15px 0;
     display: none; /* skriveno dok se ne otvori */
+    transition: all 0.4s ease;
   }
 
   .naviga a {
@@ -631,6 +652,14 @@ button:hover {
     display: flex; /* prikaži meni kad je header .open */
     border-radius: 15px;
 border: 2px solid var(--gold-glow);
+width: 150px;
+top: 150px;
+border-top-left-radius: 0%;
+border-bottom-left-radius: 0%;
+border-top-right-radius: 0%;
+  }
+  .header.shrink.header.open .naviga{
+    top: 65px;
   }
 
   .mobile-toggle {
